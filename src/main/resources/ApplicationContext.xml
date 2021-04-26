@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/Wschema/aop/spring-aop-3.2.xsdd">
+    <!-- 全局扫描包获取组件注册到IOC容器
+    <context:annotation-config />
+    <context:component-scan base-package="httpjar"/>-->
+    
+	<!-- 配置数据源 start -->
+    <bean id="jdbcDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName">
+        <value>com.mysql.jdbc.Driver</value>
+    </property>
+    <property name="url">
+        <value>jdbc:mysql://39.105.72.22:3306/bssql?useSSL=false</value>
+    </property>
+    <property name="username">
+        <value>root</value>
+    </property>
+    <property name="password">
+        <value>root</value>
+    </property>
+    <!-- 配置数据源 end -->
+	</bean>
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	    <property name="dataSource" ref="jdbcDataSource" />
+	    <property name="configLocation" value="classpath:mybatis-config.xml"></property>
+	</bean>
+	<!-- 自动扫描mapper文件夹下的接口用于在Servcie层@Autowired注入Mapper对象 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	    <property name="basePackage" value="httpjar.mapper"/>   
+	    <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+    <bean id = "studentServiceImpl" class="httpjar.service.Impl.StudentServiceImpl"></bean>
+    <bean id = "fileServiceImpl" class="httpjar.service.Impl.FileServiceImpl"></bean>
+    
+
+</beans>

@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Sun Apr 25 18:10:47 CST 2021
+onejar.license.required=true
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=false
+jarname=httpjar_fat.jar
+manifest.mergeall=true
+manifest.mainclass=httpjar.HelloApplication
+manifest.file=<createnew>
+jarname.isextern=false
+onejar.expand=
+excludes=
+includes=

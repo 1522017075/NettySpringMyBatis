@@ -1,0 +1,209 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.zkr</groupId>
+  <artifactId>httpjar</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <name>httpservicebyjar Maven Webapp</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+    <org.springframework.version>4.2.4.RELEASE</org.springframework.version>
+  </properties>
+  <dependencies>
+  <!-- a light http service by netty -->
+  	<dependency>
+	    <groupId>com.bladejava</groupId>
+	    <artifactId>blade-mvc</artifactId>
+	    <version>2.0.15.RELEASE</version>
+	</dependency>
+	
+    <!-- spring start -->
+	<!--spring core start-->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-beans</artifactId>
+        <version>${org.springframework.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>${org.springframework.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>${org.springframework.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-expression</artifactId>
+        <version>${org.springframework.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context-support</artifactId>
+        <version>${org.springframework.version}</version>
+    </dependency>
+    <!--spring core end-->
+    <!--spring aop start-->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-aop</artifactId>
+        <version>${org.springframework.version}</version>
+    </dependency>
+    <!--spirng aop end-->
+
+    <!--spring aspects start-->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-aspects</artifactId>
+        <version>${org.springframework.version}</version>
+    </dependency>
+    <!--spring aspects end-->
+
+    <!--spring instrumentation start -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-instrument</artifactId>
+        <version>${org.springframework.version}</version>
+    </dependency>
+    <!--spring instrumentation end-->
+
+    <!--spring messaging start -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-messaging</artifactId>
+        <version>${org.springframework.version}</version>
+    </dependency>
+    <!--spring messaging end-->
+
+    <!--spring data access start -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-jdbc</artifactId>
+        <version>${org.springframework.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-orm</artifactId>
+        <version>${org.springframework.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-oxm</artifactId>
+        <version>${org.springframework.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-jms</artifactId>
+        <version>${org.springframework.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-tx</artifactId>
+        <version>${org.springframework.version}</version>
+    </dependency>
+    <!--spring data access end-->
+    
+    <!-- spring end -->
+	<!-- datebase -->
+	<dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>1.18.2</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>5.1.39</version>
+      </dependency>
+      <dependency>
+	    <groupId>org.mybatis</groupId>
+	    <artifactId>mybatis</artifactId>
+	    <version>3.5.2</version>
+	  </dependency>
+	  <dependency>
+          <groupId>tk.mybatis</groupId>
+          <artifactId>mapper</artifactId>
+          <version>3.5.2</version>
+      </dependency>
+      <dependency>
+          <groupId>com.github.pagehelper</groupId>
+          <artifactId>pagehelper</artifactId>
+          <version>3.7.5</version>
+      </dependency>
+       <dependency>
+          <groupId>org.mybatis</groupId>
+          <artifactId>mybatis-spring</artifactId>
+          <version>1.3.2</version>
+      </dependency>
+      <dependency>
+          <groupId>com.alibaba</groupId>
+          <artifactId>druid</artifactId>
+          <version>1.1.10</version>
+      </dependency>
+     <!-- 日志框架 -->
+     <dependency>
+         <groupId>org.slf4j</groupId>
+         <artifactId>slf4j-api</artifactId>
+         <version>1.7.25</version>
+     </dependency>
+     <dependency>
+         <groupId>org.slf4j</groupId>
+         <artifactId>slf4j-log4j12</artifactId>
+         <version>1.7.25</version>
+         <scope>test</scope>
+     </dependency>
+     <dependency>
+         <groupId>log4j</groupId>
+         <artifactId>log4j</artifactId>
+         <version>1.2.17</version>
+     </dependency>
+  </dependencies>
+  <build>
+	  <plugins>
+		<plugin>  
+		    <groupId>org.apache.maven.plugins</groupId>  
+		    <artifactId>maven-shade-plugin</artifactId>  
+		    <version>1.4</version>  
+		    <executions>  
+		        <execution>  
+		            <phase>package</phase>  
+		            <goals>  
+		                <goal>shade</goal>  
+		            </goals>  
+		            <configuration>  
+		                <transformers>  
+		                    <transformer  
+		                        implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">  
+		                        <resource>META-INF/spring.handlers</resource>  
+		                    </transformer>  
+		                    <transformer  
+		                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">  
+		                        <mainClass>httpjar.HelloApplication</mainClass>  
+		                    </transformer>  
+		                    <transformer  
+		                        implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">  
+		                        <resource>META-INF/spring.schemas</resource>  
+		                    </transformer>  
+		                </transformers>  
+		            </configuration>  
+		        </execution>  
+		    </executions>  
+		</plugin>  
+		<plugin>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+                <source>1.8</source>
+                <target>1.8</target>
+            </configuration>
+        </plugin>
+	  </plugins>
+  </build>
+</project>
