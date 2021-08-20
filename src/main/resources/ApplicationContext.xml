@@ -43,6 +43,7 @@
     </bean>
     <bean id = "studentServiceImpl" class="httpjar.service.Impl.StudentServiceImpl"></bean>
     <bean id = "fileServiceImpl" class="httpjar.service.Impl.FileServiceImpl"></bean>
+    <bean id = "testService" class="httpjar.service.Impl.TestServiceImpl"></bean>
     
 
 </beans>
