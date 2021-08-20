@@ -2,7 +2,8 @@ package httpjar.controller;
 
 import java.util.List;
 
-import org.springframework.context.ApplicationContext;
+import httpjar.service.TestService;
+import httpjar.util.WebUtil;
 
 import com.blade.mvc.annotation.GetRoute;
 import com.blade.mvc.annotation.MultipartParam;
@@ -13,8 +14,6 @@ import com.blade.mvc.multipart.FileItem;
 import httpjar.model.dto.StudentDTO;
 import httpjar.service.FileService;
 import httpjar.service.StudentService;
-import httpjar.util.ContextUtil;
-import httpjar.util.ServiceUtil;
 
 @Path
 public class HelloController {
@@ -29,7 +28,7 @@ public class HelloController {
 	
 	@GetRoute("/home")
 	public void formParam(){
-		StudentService studentService = (StudentService)ServiceUtil.getService("studentService");
+		StudentService studentService = WebUtil.getBean(StudentService.class);
 		
 		List<StudentDTO> list = studentService.selectAll();
         for(StudentDTO stu:list){
@@ -40,7 +39,8 @@ public class HelloController {
 	
 	@PostRoute("/upload")
 	public void fileParam(@MultipartParam FileItem fileItem){
-		FileService fileService = (FileService)ServiceUtil.getService("fileService");
+		FileService fileService = WebUtil.getBean(FileService.class);
+
 		
 		if(fileService.saveFile(fileItem)) {
 			System.out.println("success save file!");
@@ -53,11 +53,14 @@ public class HelloController {
 	@GetRoute("/list")
 	public void list(){
 
-		ApplicationContext context = ContextUtil.getContextUtil();
-		String[] list = context.getBeanDefinitionNames();
-		for(String item:list) {
-			System.out.println(item);
-		}
+		TestService bean = WebUtil.getBean(TestService.class);
+		bean.test();
+
+//		ApplicationContext context = ContextUtil.getContextUtil();
+//		String[] list = context.getBeanDefinitionNames();
+//		for(String item:list) {
+//			System.out.println(item);
+//		}
         
 	}
 }
